@@ -1,21 +1,12 @@
-from Service_req.Post_req import Post_req
+from Service_req.Create_instance_req import Post_req
 from Service_req.Base_req import Base_req
 from Data_tests import data_post_method
-from Service_req.Get_req import Get_req
+from Service_req.Search_instance_req import Get_req
 import pytest
 
 
 @pytest.mark.skip_api_url_fail
-class Test_post():
-
-
-
-    def test_exist_collection(self,api_url):
-        """Проверка существования коллекции /characters"""
-        url=api_url+Base_req.collection_url
-        result=Base_req.get_method(url)
-        assert result.status_code==200,f'Коллекция {Base_req.collection_url} недоступа. \nResponse: {result} \n' \
-            f'Response body: {result.text}'
+class Test_create_instance():
 
 
     @pytest.mark.parametrize('role,auth,code_except',[('basic',Base_req.auth,200),('invalid auth',('awdawdawd','awd'),401)])

@@ -1,10 +1,10 @@
 import requests as r
 import pytest
 from Service_req.Base_req import Base_req
-from Service_req.Post_req import Post_req
-from Service_req.Get_req import Get_req
+from Service_req.Create_instance_req import Post_req
+from Service_req.Search_instance_req import Get_req
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='class')
 def api_url():
     """Фикстура для получения url хоста"""
     url=Base_req.api_url
@@ -23,7 +23,7 @@ def skip_by_smoke(request, api_url):
             pytest.skip(api_url[1])
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='class')
 def arrange_create_character(api_url):
     """Фикстура создания элементов коллекции
 
