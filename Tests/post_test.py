@@ -1,6 +1,7 @@
 from Service_req.Post_req import Post_req
 from Service_req.Base_req import Base_req
 from Data_tests import data_post_method
+from Service_req.Get_req import Get_req
 import pytest
 
 
@@ -30,9 +31,7 @@ class Test_post():
         """Запросы на создание экземпляра коллекции с некорректными свойствами"""
         data=Post_req.data_construct(test_case,property)
         result=arrange_create_character(api_url,data=data)
-        assert result.status_code==400,f'Некорректный код ответа \nЗапрос : POST ' \
-            f' \ndata: {data} \nResponse: {result} \nResponse body: {result.text}'
-        assert result.json()['error']==test_case['error'],f'Некорректная ошибка в теле ответа \nЗапрос : POST  ' \
+        assert result.status_code==400 and result.json()['error']==test_case['error'],f'Некорректная ошибка в теле ответа \nЗапрос : POST  ' \
             f' \ndata: {data} \nResponse: {result} \nResponse body: {result.text}'
 
     @pytest.mark.parametrize('property,test_case', Post_req.get_test_case(data_post_method.data_positive_post))
@@ -55,3 +54,11 @@ class Test_post():
         assert duplicate_instance.status_code==400 and duplicate_instance.json()['error']==f"{test_case['case_create']['value']} is already exists",f'' \
             f'Возникла ошибка при создании дублирующего экземпляра \nЗапрос : POST ' \
             f' \ndata: {data_duplicate} \nResponse: {duplicate_instance} \nResponse body: {duplicate_instance.text}'
+
+
+    def test_creation_limit_instance(self,api_url):
+        items_now=Get_req.number_items_collection(api_url)
+        for instance in range(Base_req.max_items_collections-items_now):
+            Post_req.create_codes(api_url)
+        result=Post_req.create_codes(api_url)
+        assert result.status_code==400 and result.json()['error']=="Collection can't contain more than 500 items",f'База данных вмещает больше чем 500 персонажей'
