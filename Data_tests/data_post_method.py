@@ -196,5 +196,12 @@ data_positive_post={
 
 
 data_duplicate_post={
-
+    'name':[{
+        'case_create':{
+            'value':'Test duplicate name'
+        },
+        'case_duplicate':{
+            'value':'Test duplicate name'
+        }
+    }]
 }

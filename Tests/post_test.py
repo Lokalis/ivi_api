@@ -44,6 +44,14 @@ class Test_post():
             f' \ndata: {data} \nResponse: {result} \nResponse body: {result.text}'
 
 
-
-    def test_duplicate_create_instance(self,api_url,arrange_create_character):
-        pass
+    @pytest.mark.parametrize('property,test_case', Post_req.get_test_case(data_post_method.data_duplicate_post))
+    def test_duplicate_create_instance(self,api_url,arrange_create_character,property,test_case):
+        data_create=Post_req.data_construct(test_case['case_create'],property)
+        data_duplicate=Post_req.data_construct(test_case['case_duplicate'],property)
+        create_instance=arrange_create_character(api_url,data=data_create)
+        duplicate_instance=arrange_create_character(api_url,data=data_duplicate)
+        assert create_instance.status_code==200,f'Экземляр-обрзец не создан \nЗапрос : POST ' \
+            f' \ndata: {data_create} \nResponse: {create_instance} \nResponse body: {create_instance.text}'
+        assert duplicate_instance.status_code==400 and duplicate_instance.json()['error']==f"{test_case['case_create']['value']} is already exists",f'' \
+            f'Возникла ошибка при создании дублирующего экземпляра \nЗапрос : POST ' \
+            f' \ndata: {data_duplicate} \nResponse: {duplicate_instance} \nResponse body: {duplicate_instance.text}'
