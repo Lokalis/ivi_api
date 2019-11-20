@@ -1,6 +1,6 @@
 
 
-data_negative_post={
+data_negative_create={
     'data':[{
         'value':[],
         'error':"_schema: ['Invalid input type.']"
@@ -132,7 +132,7 @@ data_negative_post={
     }]
 }
 
-data_positive_post={
+data_positive_create={
     'name':[{
         'value':'r'
     },{
@@ -194,8 +194,7 @@ data_positive_post={
     }]
 }
 
-
-data_duplicate_post={
+data_duplicate_create={
     'name':[{
         'case_create':{
             'value':'Test duplicate name'

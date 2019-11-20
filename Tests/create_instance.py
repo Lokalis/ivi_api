@@ -17,7 +17,7 @@ class Test_create_instance():
             f'\nResponse: {result} \nResponse body: {result.text}'
 
 
-    @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_create_instance.data_negative_post))
+    @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_create_instance.data_negative_create))
     def test_negative_create_instance(self,api_url,arrange_create_character,property,test_case):
         """Запросы на создание экземпляра коллекции с некорректными свойствами"""
         data=Create_instance_req.data_create_construct(test_case, property)
@@ -25,7 +25,7 @@ class Test_create_instance():
         assert result.status_code==400 and result.json()['error']==test_case['error'],f'\nНекорректная ошибка в теле ответа \nЗапрос : POST  ' \
             f' \ndata: {data} \nExcept error: {test_case["error"]} \nResponse: {result} \nResponse body: {result.text}'
 
-    @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_create_instance.data_positive_post))
+    @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_create_instance.data_positive_create))
     def test_positive_create_instance(self,api_url,arrange_create_character,property,test_case):
         """Запросы на создание экземпляра коллекции с корректными свойствами"""
         data = Create_instance_req.data_create_construct(test_case, property)
@@ -34,7 +34,7 @@ class Test_create_instance():
             f' \ndata: {data} \nResponse: {result} \nResponse body: {result.text}'
 
 
-    @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_create_instance.data_duplicate_post))
+    @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_create_instance.data_duplicate_create))
     def test_duplicate_create_instance(self,api_url,arrange_create_character,property,test_case):
         """Запросы на создание экземпляра коллекции с дублирующими свойствами"""
         data_create=Create_instance_req.data_create_construct(test_case['case_create'], property)

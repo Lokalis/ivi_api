@@ -1,0 +1,52 @@
+data_positive_modify={
+    'education':[{
+        'value':'r'
+    },{
+        'value':'r'*350
+    },{
+        'value':'r'*349
+    },{
+        'value':'"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'
+    }],
+    'identity':[{
+        'value':'r'
+    },{
+        'value':'r'*350
+    },{
+        'value':'r'*349
+    },{
+        'value':'"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'
+    }],
+    'other_aliases':[{
+        'value':'r'
+    },{
+        'value':'r'*350
+    },{
+        'value':'r'*349
+    },{
+        'value':'"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'
+    }],
+    'universe':[{
+        'value':'r'
+    },{
+        'value':'r'*350
+    },{
+        'value':'r'*349
+    },{
+        'value':'"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'
+    }],
+    'weight':[{
+        'value':100
+    },{
+        'value':100.5
+    },{
+        'value':0
+    },{
+        'value':-1
+    }],
+    'height':[{
+        'value':0
+    },{
+        'value':0.5
+    }]
+}
