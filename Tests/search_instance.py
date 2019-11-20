@@ -30,6 +30,7 @@ class Test_search_instance():
 
     @pytest.mark.parametrize('property,test_case',Create_instance_req.get_test_case(data_search_instance.data_positive_search_instance))
     def test_positive_search_instance(self,property,test_case,api_url,arrange_create_character):
+        """Запросы на создание экземпляра коллекции с корректными свойствами"""
         data_create = Create_instance_req.data_create_construct(test_case['add_instance'], property=property)
         create_instance=arrange_create_character(api_url, data=data_create)
         data_search = Search_instance_req.data_search_construct(test_case)

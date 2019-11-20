@@ -8,6 +8,7 @@ class Modify_req():
 
     @staticmethod
     def modify_instance(api_url,data,auth=None):
+        """Метод изменения экземпляра на основании переданных данных data"""
         url=api_url+Base_req.instance_collection_url
         result=Base_req.put_method(url,json=data,auth=auth)
         return result
@@ -15,6 +16,7 @@ class Modify_req():
 
     @staticmethod
     def modify_data_construct(property,test_case,name):
+        """Метод подготовки данных из тест-кейса"""
         data_default={
             'name':name
         }

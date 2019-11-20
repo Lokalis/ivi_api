@@ -16,7 +16,6 @@ class Base_req():
         'Content-Type':'application/json'
     }
 
-
     @staticmethod
     def get_method(url,params=None,auth=None):
         if auth is None:
