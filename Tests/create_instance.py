@@ -30,7 +30,7 @@ class Test_create_instance():
         """Запросы на создание экземпляра коллекции с корректными свойствами"""
         data = Create_instance_req.data_create_construct(test_case, property)
         result = arrange_create_character(api_url, data=data)
-        assert result.status_code==200,f'Экземпляр коллекции не создался\nЗапрос : POST ' \
+        assert result.status_code==200,f'Экземпляр коллекции не создался \nЗапрос : POST ' \
             f' \ndata: {data} \nResponse: {result} \nResponse body: {result.text}'
 
 

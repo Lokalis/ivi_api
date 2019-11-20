@@ -15,7 +15,7 @@ class Search_instance_req():
     def search_instance(api_url, name,auth=None):
         """Метод поиска экземляров коллекции по свойству name
 
-        Метод составитавляет валидное имя из переданой строки name
+        Метод составляет валидное имя из переданой строки name
         Валидное имя - если имя указано из нескольких слов - между ними нужно ставить знак +"""
 
         name='+'.join(name.split())
@@ -25,8 +25,8 @@ class Search_instance_req():
 
 
     @staticmethod
-    def date_search_construct(test_case):
-        """Функция создания строки запроса данных тест-кейса на поиск экземляра"""
+    def data_search_construct(test_case):
+        """Метод создания строки запроса данных тест-кейса на поиск экземляра"""
         data='?name='
         if test_case['value'] == 'miss':
             data=''

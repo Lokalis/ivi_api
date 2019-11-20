@@ -1,6 +1,7 @@
 from Service_req.Base_req import Base_req
+import pytest
 
-
+@pytest.mark.skip_api_url_fail
 class Test_general():
 
     def test_exist_collection(self,api_url):
