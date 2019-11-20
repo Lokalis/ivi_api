@@ -2,7 +2,7 @@ from Service_req.Base_req import Base_req
 import random
 
 
-class Post_req():
+class Create_instance_req():
 
     @staticmethod
     def random_characters_data():
@@ -18,15 +18,15 @@ class Post_req():
         '''Метод создания экземпляра коллекции'''
         url = api_url + Base_req.instance_collection_url
         if data is 'random':
-            data=Post_req.random_characters_data()
+            data=Create_instance_req.random_characters_data()
         result = Base_req.post_method(url, json=data,auth=auth)
         return result
 
     @staticmethod
-    def data_construct(test_case, property, data=None):
+    def data_create_construct(test_case, property, data=None):
         """Метод формирует тело запроса исходя из данных тест-кейса"""
-        if not data:
-            data = Post_req.random_characters_data()
+        if data is None:
+            data = Create_instance_req.random_characters_data()
         if property == 'data':
             data = test_case['value']
             return data

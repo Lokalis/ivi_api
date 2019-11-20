@@ -21,7 +21,7 @@ class Base_req():
     def get_method(url,params=None,auth=None):
         if auth is None:
             auth=Base_req.auth
-        result=r.get(url,params=params,auth=auth)
+        result=r.get(url,params=params,auth=auth,headers=Base_req.headers)
         return result
 
     @staticmethod

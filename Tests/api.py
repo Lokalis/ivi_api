@@ -1,5 +1,6 @@
-from Tests import create_instance,general_tests
+from Tests import create_instance,general_tests,search_instance
 
 
 Test_general=general_tests.Test_general
-Test_post=create_instance.Test_create_instance
+Test_create_instance=create_instance.Test_create_instance
+Test_search_instance=search_instance.Test_search_instance
