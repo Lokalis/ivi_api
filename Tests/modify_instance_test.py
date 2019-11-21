@@ -6,20 +6,20 @@ import pytest
 @pytest.mark.skip_api_url_fail
 class Test_modify_instance():
 
-    @pytest.mark.parametrize('role,auth,code_except', [('basic', None, 400), ('invalid auth', ('awdawdawd', 'awd'), 401)])
+    @pytest.mark.parametrize('role,auth,code_except', [('basic', None, 400), ('invalid auth', ('awdawdawd', 'awd'), 401),('invalid email',('den','hgJH768Cv23'),401)])
     def test_access_resource_method(self, api_url, arrange_create_character, role, auth, code_except, client):
         f"""Выполнение запросов на создание экземляра коллекции с аутентификацией {role}"""
         unknown_instance = {'name': 'test_access_resource'}
         result = client.Modify_instance_req.modify_instance(api_url, unknown_instance, auth=auth)
-        assert result.status_code == code_except, f' Некорректный код ответа на запрос создания экземпляра с ролью {role}.' \
-            f'\nResponse: {result} \nResponse body: {result.text}'
+        assert result.status_code == code_except, f'\nНекорректный код ответа на запрос создания экземпляра с ' \
+            f'aутентификацией {role} \nAuth: {auth} \nЗапрос: PUT \nResponse: {result} \nResponse body: {result.text}'
 
     @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_modify_instance.data_positive_modify))
     def test_positive_modify_instance(self, api_url, property, test_case, arrange_create_character, client):
         """Запросы на изменение экземпляра с корректными параметрами"""
         data_modify = client.Modify_instance_req.modify_data_construct(property,test_case,arrange_create_character(api_url).json()['result']['name'])
         result = client.Modify_instance_req.modify_instance(api_url, data_modify)
-        assert result.status_code == 200, f'Экземпляр коллекции не изменился \nЗапрос : PUT ' \
+        assert result.status_code == 200, f'\nЭкземпляр коллекции не изменился \nЗапрос : PUT ' \
             f' \ndata: {data_modify} \nResponse: {result} \nResponse body: {result.text}'
 
     @pytest.mark.parametrize('property,test_case',

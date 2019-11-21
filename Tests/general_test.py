@@ -7,5 +7,5 @@ class Test_general():
         """Проверка существования коллекции /characters"""
         url = api_url+client.collection_url
         result = client.Base_req.get_method(url)
-        assert result.status_code == 200,f'Коллекция {client.collection_url} недоступа. \nResponse: {result} \n' \
+        assert result.status_code == 200,f'\nКоллекция {client.collection_url} недоступа. \nResponse: {result} \n' \
             f'Response body: {result.text}'

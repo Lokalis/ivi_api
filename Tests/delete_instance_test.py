@@ -6,13 +6,13 @@ import pytest
 @pytest.mark.skip_api_url_fail
 class Test_delete_instance():
 
-    @pytest.mark.parametrize('role,auth,code_except', [('basic', None, 400), ('invalid auth', ('awdawdawd', 'awd'), 401)])
+    @pytest.mark.parametrize('role,auth,code_except', [('basic', None, 400), ('invalid auth', ('awdawdawd', 'awd'), 401),('invalid email',('den','hgJH768Cv23'),401)])
     def test_access_resource_method(self, api_url, code_except, role, auth, client):
         f"""Выполнение запросов на поиск экземляра коллекции с аутентификацией {role}"""
         search_name = 'random_name'
         result = client.Delete_instance_req.delete_instance(api_url, search_name,auth=auth)
-        assert result.status_code == code_except, f' Некорректный код ответа на запрос поиска экземпляра с ролью {role}.' \
-            f'\nResponse: {result} \nResponse body: {result.text}'
+        assert result.status_code == code_except, f'\nНекорректный код ответа на запрос создания экземпляра с ' \
+            f'aутентификацией {role} \nAuth: {auth} \nЗапрос: DELETE \nResponse: {result} \nResponse body: {result.text}'
 
     @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_search_instance.date_negative_search_instance))
     def test_negative_search_instance(self, api_url, arrange_create_character, property, test_case, client):

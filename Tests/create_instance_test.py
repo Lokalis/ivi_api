@@ -6,12 +6,12 @@ import pytest
 @pytest.mark.skip_api_url_fail
 class Test_create_instance():
 
-    @pytest.mark.parametrize('role,auth,code_except', [('basic', None, 200), ('invalid auth', ('awdawdawd', 'awd'), 401)])
+    @pytest.mark.parametrize('role,auth,code_except', [('basic', None, 200), ('invalid full auth', ('awdawdawd', 'awd'), 401),('invalid email',('den','hgJH768Cv23'),401)])
     def test_access_resource_method(self, api_url, arrange_create_character, role, auth, code_except):
         f"""Выполнение запросов на создание экземляра коллекции с аутентификацией {role}"""
         result = arrange_create_character(api_url, auth=auth)
-        assert result.status_code == code_except, f' Некорректный код ответа на запрос создания экземпляра с ролью {role}.' \
-            f'\nResponse: {result} \nResponse body: {result.text}'
+        assert result.status_code == code_except, f'\nНекорректный код ответа на запрос создания экземпляра с ' \
+            f'aутентификацией {role} \nAuth: {auth} \nЗапрос: POST \nResponse: {result} \nResponse body: {result.text}'
 
     @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_create_instance.data_negative_create))
     def test_negative_create_instance(self, api_url, arrange_create_character, property, test_case, client):
@@ -26,7 +26,7 @@ class Test_create_instance():
         """Запросы на создание экземпляра коллекции с корректными свойствами"""
         data = client.Create_instance_req.data_create_construct(test_case, property)
         result = arrange_create_character(api_url, data=data)
-        assert result.status_code == 200, f'Экземпляр коллекции не создался \nЗапрос : POST ' \
+        assert result.status_code == 200, f'\nЭкземпляр коллекции не создался \nЗапрос : POST ' \
             f' \ndata: {data} \nResponse: {result} \nResponse body: {result.text}'
 
     @pytest.mark.parametrize('property,test_case', Create_instance_req.get_test_case(data_create_instance.data_duplicate_create))
@@ -36,10 +36,10 @@ class Test_create_instance():
         data_duplicate = client.Create_instance_req.data_create_construct(test_case['case_duplicate'], property)
         create_instance = arrange_create_character(api_url, data=data_create)
         duplicate_instance = arrange_create_character(api_url, data=data_duplicate)
-        assert create_instance.status_code == 200, f'Экземляр-образец не создан \nЗапрос : POST ' \
+        assert create_instance.status_code == 200, f'\nЭкземляр-образец не создан \nЗапрос : POST ' \
             f' \ndata: {data_create} \nResponse: {create_instance} \nResponse body: {create_instance.text}'
         assert duplicate_instance.status_code == 400 and duplicate_instance.json()['error'] == f"{test_case['case_create']['value']} is already exists",f'' \
-            f'Возникла ошибка при создании дублирующего экземпляра \nЗапрос : POST ' \
+            f'\nВозникла ошибка при создании дублирующего экземпляра \nЗапрос : POST ' \
             f' \ndata: {data_duplicate} \nExcept error: {test_case["error"]} \nResponse: {duplicate_instance} \nResponse body: {duplicate_instance.text}'
 
     def test_creation_limit_instance(self, api_url, client):
@@ -48,4 +48,4 @@ class Test_create_instance():
         for instance in range(client.max_items_collections-items_now):
             client.Create_instance_req.create_character(api_url)
         result = client.Create_instance_req.create_character(api_url)
-        assert result.status_code == 400 and result.json()['error'] == "Collection can't contain more than 500 items", f'База данных вмещает больше чем 500 персонажей'
+        assert result.status_code == 400 and result.json()['error'] == "Collection can't contain more than 500 items", f'\nБаза данных вмещает больше чем 500 персонажей'
