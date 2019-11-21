@@ -7,7 +7,9 @@
 ------------
 
 Python 3.7.2
+
 Requests 2.21
+
 Pytest 5.0.1
 
 
@@ -21,24 +23,27 @@ Pytest 5.0.1
 
 1. Процес создания экземпляра:
         
-        create_instance.py
+        create_instance_test.py
         
 2. Процесс поиска экземпляра: 
 
-        search_instance.py
+        search_instance_test.py
         
 3. Процесс внесения изменений в экземпляр:
 
-        modify_instance.py
+        modify_instance_test.py
         
 4. Процесс удаления экземпляра: 
 
-        delete_instance.py 
+        delete_instance_test.py 
         
 5. Процесс приведения базы к первоначальному состоянию:
 
-        reset_collection.py 
-    
+        reset_collection_test.py 
+        
+6. Проверка существования базы /characters
+     
+        general_test.py
     
 Запуск тестов
 ------------
@@ -50,4 +55,12 @@ Pytest 5.0.1
    Запуск тестов по отдельным функциональностям: 
    
         pytest Tests/{наименование функциональности}.py 
-        
+
+Структура проекта 
+------------
+
+Data_tests - содержит файлы с тест-кейсами для автоматизированного тестирования 
+
+Service_req - содержит файлы с методами взаимодействия с API
+
+Tests - содержит файлы с тестами
