@@ -3,43 +3,31 @@ import requests as r
 
 class Base_req():
 
-    auth=('Volkov.denis.vad@yandex.ru','hgJH768Cv23')
+    def __init__(self, app):
+        self.app = app
 
-    api_url='http://rest.test.ivi.ru/v2'
-    collection_url='/characters'
-    instance_collection_url='/character'
-    reset_collection_url='/reset'
+    _session = r.session()
 
-    max_items_collections=500
-
-    headers={
-        'Content-Type':'application/json'
-    }
-
-    @staticmethod
-    def get_method(url,params=None,auth=None):
+    def get_method(self, url, params=None, auth=None):
         if auth is None:
-            auth=Base_req.auth
-        result=r.get(url,params=params,auth=auth,headers=Base_req.headers)
+            auth = self.app.auth
+        result = self._session.get(url, params=params, auth=auth, headers=self.app.headers)
         return result
 
-    @staticmethod
-    def post_method(url, json=None,auth=None):
+    def post_method(self, url, json=None, auth=None):
         if auth is None:
-            auth=Base_req.auth
-        result = r.post(url, headers=Base_req.headers,json=json,auth=auth)
+            auth = self.app.auth
+        result = self._session.post(url, headers=self.app.headers, json=json, auth=auth)
         return result
 
-    @staticmethod
-    def delete_method(url,auth=None):
+    def delete_method(self, url, auth=None):
         if auth is None:
-            auth=Base_req.auth
-        result = r.delete(url,headers=Base_req.headers,auth=auth)
+            auth = self.app.auth
+        result = self._session.delete(url, headers=self.app.headers, auth=auth)
         return result
 
-    @staticmethod
-    def put_method(url,json=None,auth=None):
+    def put_method(self, url, json=None, auth=None):
         if auth is None:
-            auth=Base_req.auth
-        result = r.put(url, headers=Base_req.headers, json=json, auth=auth)
+            auth = self.app.auth
+        result = self._session.put(url, headers=self.app.headers, json=json, auth=auth)
         return result

@@ -1,24 +1,18 @@
 from Service_req.Base_req import Base_req
-from Service_req.Create_instance_req import Create_instance_req
 
 
+class Modify_req(Base_req):
 
-class Modify_req():
-
-
-    @staticmethod
-    def modify_instance(api_url,data,auth=None):
+    def modify_instance(self, api_url, data, auth=None):
         """Метод изменения экземпляра на основании переданных данных data"""
-        url=api_url+Base_req.instance_collection_url
-        result=Base_req.put_method(url,json=data,auth=auth)
+        url = api_url+self.app.instance_collection_url
+        result = self.put_method(url,json=data,auth=auth)
         return result
 
-
-    @staticmethod
-    def modify_data_construct(property,test_case,name):
+    def modify_data_construct(self, property, test_case, name):
         """Метод подготовки данных из тест-кейса"""
-        data_default={
-            'name':name
+        data_default = {
+            'name': name
         }
-        data_modify=Create_instance_req.data_create_construct(property=property,test_case=test_case,data=data_default)
+        data_modify = self.app.Create_instance_req.data_create_construct(property=property, test_case=test_case, data=data_default)
         return data_modify
