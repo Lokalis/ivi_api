@@ -16,9 +16,10 @@ def api_url():
 
 @pytest.fixture(scope='session')
 def client():
+    """Фикстура для получения экземпляра обобщающего класса App"""
     session = App()
     yield session
-    session.Base_req._s.close()
+    session.Base_req._session.close()
 
 
 @pytest.fixture(scope='class', autouse=True)

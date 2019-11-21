@@ -1,7 +1,7 @@
 from Service_req.Base_req import Base_req
 
 
-class Modify_req(Base_req):
+class Modify_instance_req(Base_req):
 
     def modify_instance(self, api_url, data, auth=None):
         """Метод изменения экземпляра на основании переданных данных data"""

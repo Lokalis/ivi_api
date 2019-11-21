@@ -1,7 +1,8 @@
-from Tests import create_instance,general_tests,search_instance,delete_instance,reset_collection
+from Tests import create_instance,general_tests,search_instance,delete_instance,reset_collection,modify_instance
 
 Test_general = general_tests.Test_general
 Test_create_instance = create_instance.Test_create_instance
 Test_search_instance = search_instance.Test_search_instance
 Test_delete_instance = delete_instance.Test_delete_instance
 Test_reset_collection = reset_collection.Test_reset_all_collection
+Test_modify_instance=modify_instance.Test_modify_instance
