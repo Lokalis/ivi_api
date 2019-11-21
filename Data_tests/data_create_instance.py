@@ -77,28 +77,6 @@ data_negative_create = {
     }, {
         'value': None,
         'error': "name: ['Field may not be null.']"
-    }, {
-        'value': None,
-        'add': [{
-            'attribute': 'education',
-            'value': None
-        }, {
-            'attribute': 'universe',
-            'value': None
-        }, {
-            'attribute': 'identity',
-            'value': None
-        }, {
-            'attribute': 'height',
-            'value': None
-        }, {
-            'attribute': 'weight',
-            'value': None
-        }, {
-            'attribute': 'other_aliases',
-            'value': None
-        }],
-        'error':"identity: ['Field may not be null.'], weight: ['Field may not be null.'], height: ['Field may not be null.'], education: ['Field may not be null.'], name: ['Field may not be null.'], universe: ['Field may not be null.'], other_aliases: ['Field may not be null.']"
     }],
     'education': [{
         'value': '',
@@ -230,9 +208,9 @@ data_positive_create = {
         'value': '"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'
     }],
     'weight': [{
-        'value': 100
+        'value': 1
     }, {
-        'value': 100.5
+        'value': 1.55
     }, {
         'value': 0
     }, {
@@ -241,7 +219,9 @@ data_positive_create = {
     'height': [{
         'value': 0
     }, {
-        'value': 0.5
+        'value': 0.55
+    },{
+        'value': 1
     }]
 }
 

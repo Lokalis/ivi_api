@@ -25,4 +25,4 @@ class App():
 
     headers = {
         'Content-Type': 'application/json'
-}
+    }

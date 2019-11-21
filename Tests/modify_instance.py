@@ -30,3 +30,4 @@ class Test_modify_instance():
         result = client.Modify_instance_req.modify_instance(api_url, data_modify)
         assert result.status_code==400 and result.json()['error'] == test_case['error'], f'\nНекорректная ошибка в теле ответа \nЗапрос : PUT  ' \
             f' \ndata: {data_modify} \nExcept error: {test_case["error"]} \nResponse: {result} \nResponse body: {result.text}'
+

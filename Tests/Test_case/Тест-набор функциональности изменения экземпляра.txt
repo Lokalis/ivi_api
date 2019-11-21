@@ -1,0 +1,639 @@
+Тест-набор проверки работы функциональности изменения экземпляра.
+
+
+Additional info: 
+	url=http://rest.test.ivi.ru/v2/character
+	headers={
+		‘Content-Type’:’aplication/json’}
+	auth=(‘Volkov.denis.vad@yandex.ru’,’hgJH768Cv23’)
+
+	Названием теста выступает его полное имя в тестовом фреймворке. (Для удобства запуска)
+
+
+
+	1.Проверка доступности метода у ресурса: 
+
+		1.1 Tests/modify_instance.py::Test_modify_instance::test_access_resource_method[basic-None-400]
+		
+			Описание: Метод PUT должен быть доступен на url только авторизованным пользователям. 
+			Осуществляется попытка изменения несуществующего экземпляра, для повышения устойчивости теста
+
+			Метод: PUT
+
+			json={'name': 'test_access_resource'}
+		
+			auth=(‘Volkov.denis.vad@yandex.ru’,’hgJH768Cv23’)
+		
+			Ожидаемый результат : Код ответа с данными параметрами - 400
+
+		1.2 Tests/modify_instance.py::Test_modify_instance::test_access_resource_method[invalid auth-auth1-401]
+
+			Описание: Метод PUT должен быть доступен на url только авторизованным пользователям. 
+			Осуществляется попытка изменения несуществующего экземпляра, для повышения устойчивости теста
+
+			Метод: PUT
+
+			json={'name': 'test_access_resource'}
+		
+			auth=(‘awdawdawd’,'awd')
+		
+			Ожидаемый результат : Код ответа с данными параметрами - 401
+
+	2.Запросы на изменение экземпляра с некорректными данными: 
+
+		2.1 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[data-test_case0]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого тела. 
+
+			Метод: PUT
+
+			json=[]
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : _schema: ['Invalid input type.']
+
+		2.2 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[data-test_case1] 
+
+			Описание: Сервер должен принимать только корректные значения передаваемого тела. 
+
+			Метод: PUT
+
+			json=None
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : "Payload must be a valid json"
+
+		2.3 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[name-test_case2]
+		
+			Описание: Сервер должен принимать только корректные значения передаваемого имени. Пустая строка в имени. 
+
+			Метод: PUT
+
+			json={'name':''}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Length must be between 1 and 350.']
+
+		2.4 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[name-test_case3]
+		
+			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
+
+			Метод: PUT
+
+			json={'name':[]}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Not a valid string.']
+
+		2.5 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[name-test_case4]
+	
+			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
+
+			Метод: PUT
+
+			json={}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Missing data for required field.']
+
+		2.6 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[name-test_case5]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
+
+			Метод: PUT
+
+			json={'name':'s'*351}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Length must be between 1 and 350.']
+
+		2.7 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[name-test_case6]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
+			В данном тесте в имени 2 пробела - Сервер не должен хранить пустые значения.
+
+			Метод: PUT
+
+			json={'name':' '}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Not a valid string.']
+
+		2.8 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[name-test_case7]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
+
+			Метод: PUT
+
+			json={'name':None}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Field may not be null.']
+
+
+		2.9 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[education-test_case8]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. Пуста строка
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'education':''}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Length must be between 1 and 350.']
+
+		2.10 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[education-test_case9]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'education':[]}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Not a valid string.']
+
+		2.11 Tests/api.py::Test_create_instance::test_negative_create_instance[education-test_case10]
+	
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'education':'s' * 351}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Length must be between 1 and 350.']
+
+		2.12 Tests/api.py::Test_create_instance::test_negative_create_instance[education-test_case11]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. Строка с одним пробелом.
+			Сервер не должен хранить пустые значения.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'education':' '}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Not a valid string.']
+
+		2.13 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[education-test_case12]
+			
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'education':None}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Field may not be null.']
+
+		2.14 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[identity-test_case13]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'identity':''}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Length must be between 1 and 350.']
+
+		2.15 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[identity-test_case14]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'identity':[]}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Not a valid string.']
+
+		2.16 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[identity-test_case15]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'identity':'s'*351}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Length must be between 1 and 350.']
+
+		2.17 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[identity-test_case16]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity. Пустая строка c пробелом.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'identity':' '}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Not a valid string.']
+
+		2.18 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[identity-test_case17]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'identity':None}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Field may not be null.']
+
+
+		2.19 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[other_aliases-test_case18] 
+			
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. Пустая строка.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':''}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Length must be between 1 and 350.']
+
+		2.20 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[other_aliases-test_case18]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':[]}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Not a valid string.']
+
+		2.21 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[other_aliases-test_case19]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':'s'*351}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Length must be between 1 and 350.']
+
+		2.22 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[other_aliases-test_case20] 
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':'s'*351}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Length must be between 1 and 350.']
+
+
+		2.23 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[other_aliases-test_case21] 
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. Один пробел.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':' '}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Not a valid string.']
+
+	
+		2.24 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[other_aliases-test_case22] 
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':None}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Field may not be null.']
+
+		2.25 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[universe-test_case23]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'universe':''}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Length must be between 1 and 350.']
+
+		2.26 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[universe-test_case24]
+			
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'universe':[]}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Not a valid string.']
+
+		2.27 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[universe-test_case25]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'universe':'s'*351}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Length must be between 1 and 350.']
+
+		2.28 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[universe-test_case26] 
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. Один пробел. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'universe':' '}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Not a valid string.']]
+
+
+		2.29 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[universe-test_case27]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. Один пробел. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'universe':None}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Field may not be null.']
+
+
+		2.30 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[weight-test_case28]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства weight. Пустая строка
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'weight':''}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : weight: ['Not a valid number.']
+
+ 
+		2.31  Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[weight-test_case29]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства weight. Пустая строка
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'weight':None}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : weight: ['Field may not be null.']
+
+		2.32 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[height-test_case30]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства height. Рост не может быть отрицательным.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'height':-1}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : height: ['Not a valid number.']
+
+
+		2.33 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[height-test_case31]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства height. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'height':''}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : height: ['Not a valid number.']
+
+		2.34 Tests/modify_instance.py::Test_modify_instance::test_negative_modify_instance[height-test_case32]
+
+			Описание: Сервер должен принимать только корректные значения передаваемого свойства height.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'height':None}
+			
+			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : height: ['Field may not be null.']
+
+
+		3. Запросы на изменение экземпляра с корректными данными: 
+
+		3.1 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[education-test_case0]
+
+			Описание: Сервер должен принимать корректные изменения параметра education.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'education':'r'}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+
+		3.2 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[education-test_case1] 
+
+			Описание: Сервер должен принимать корректные изменения параметра education. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'education':'r'*350}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+
+		3.3 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[education-test_case2]
+
+			Описание: Сервер должен принимать корректные изменения параметра education. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'education':'r'*349}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.4 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[education-test_case3]
+
+			Описание: Сервер должен принимать корректные изменения параметра education. 
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'education':'"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.5 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[identity-test_case4]
+
+			Описание: Сервер должен принимать корректные изменения параметра identity.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'identity':'r'}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+
+		3.6 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[identity-test_case5]
+
+			Описание: Сервер должен принимать корректные изменения параметра identity.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'identity':'r'*350}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.7 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[identity-test_case6] 
+			
+			Описание: Сервер должен принимать корректные изменения параметра identity.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'identity':'r'*349}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.8 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[identity-test_case7] 
+
+			Описание: Сервер должен принимать корректные изменения параметра identity.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'identity':'"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.9 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[other_aliases-test_case8]
+
+			Описание: Сервер должен принимать корректные изменения параметра other_aliases.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':'r'}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.10 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[other_aliases-test_case9] 
+
+			Описание: Сервер должен принимать корректные изменения параметра other_aliases.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':'r'*350}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+
+		3.11 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[other_aliases-test_case10] 
+
+			Описание: Сервер должен принимать корректные изменения параметра other_aliases.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':'r'*349}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.12 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[other_aliases-test_case11]
+
+			Описание: Сервер должен принимать корректные изменения параметра other_aliases.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'other_aliases':'"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.13 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[universe-test_case12]
+
+			Описание: Сервер должен принимать корректные изменения параметра universe.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'universe':'r'}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+			
+
+		3.14 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[universe-test_case13]
+
+			Описание: Сервер должен принимать корректные изменения параметра universe.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'universe':'r'*350}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.15 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[universe-test_case14]
+
+			Описание: Сервер должен принимать корректные изменения параметра universe.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'universe':'r'*349}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.16 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[universe-test_case15] 
+
+			Описание: Сервер должен принимать корректные изменения параметра universe.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'universe':'"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+			
+
+		3.17 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[weight-test_case16]
+			
+			Описание: Сервер должен принимать корректные изменения параметра weight.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'weight':1}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.18 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[weight-test_case17]
+
+			Описание: Сервер должен принимать корректные изменения параметра weight.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'weight':1.55}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+
+		3.19 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[weight-test_case18]
+
+			Описание: Сервер должен принимать корректные изменения параметра weight.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'weight':0}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.20 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[weight-test_case19]
+
+			Описание: Сервер должен принимать корректные изменения параметра weight.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'weight':-1}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.21 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[height-test_case20]
+
+			Описание: Сервер должен принимать корректные изменения параметра height.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'height':0}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+		3.22 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[height-test_case21]
+
+			Описание: Сервер должен принимать корректные изменения параметра height.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'height':0.55}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+
+		3.23 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[height-test_case22]
+		
+			Описание: Сервер должен принимать корректные изменения параметра height.
+		
+			Метод: PUT
+
+			json={'name':'Валидное случайное имя', 'height':1}
+			
+			Ожидаемый результат : Код ответа на запрос - 200
+
+			
+
+
+
+

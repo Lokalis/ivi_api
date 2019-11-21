@@ -45,9 +45,9 @@ data_positive_modify = {
         'value': '"! # $ % & ‘ * + — / = ? ^ _ ` { | } ~"'
     }],
     'weight': [{
-        'value': 100
+        'value': 1
     }, {
-        'value': 100.5
+        'value': 1.55
     }, {
         'value': 0
     }, {
@@ -56,6 +56,8 @@ data_positive_modify = {
     'height': [{
         'value': 0
     }, {
-        'value': 0.5
+        'value': 0.55
+    },{
+        'value': 1
     }]
 }
