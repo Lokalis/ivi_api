@@ -39,7 +39,7 @@ Additional info:
 
 	2.Запросы на создание экземпляра с некорректными данными: 
 
-		2.1 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data-test_case0]
+		2.1 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test0]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого тела. 
 
@@ -49,7 +49,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : _schema: ['Invalid input type.']
 
-		2.2 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data-test_case1]
+		2.2 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test1]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого тела. 
 
@@ -59,7 +59,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : "Payload must be a valid json"
 
-		2.3 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[name-test_case2]
+		2.3 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test2]
 		
 			Описание: Сервер должен принимать только корректные значения передаваемого имени. Пустая строка в имени. 
 
@@ -69,7 +69,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Length must be between 1 and 350.']
 
-		2.4 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[name-test_case3]
+		2.4 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test3]
 		
 			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
 
@@ -79,7 +79,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Not a valid string.']
 
-		2.5 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[name-test_case4]
+		2.5 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test4]
 	
 			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
 
@@ -89,7 +89,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Missing data for required field.']
 
-		2.6 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[name-test_case5]
+		2.6 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test5]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
 
@@ -99,7 +99,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Length must be between 1 and 350.']
 
-		2.7 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[name-test_case6]
+		2.7 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test6]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
 			В данном тесте в имени 2 пробела - Сервер не должен хранить пустые значения.
@@ -110,7 +110,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Not a valid string.']
 
-		2.8 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[name-test_case7]
+		2.8 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test7]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого имени. 
 
@@ -121,7 +121,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : name: ['Field may not be null.']
 
 
-		2.9 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[education-test_case8]
+		2.9 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test8]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. Пуста строка
 		
@@ -131,7 +131,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Length must be between 1 and 350.']
 
-		2.10 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[education-test_case9]
+		2.10 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test9]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. 
 		
@@ -141,7 +141,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Not a valid string.']
 
-		2.11 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[education-test_case10]
+		2.11 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test10]
 	
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. 
 		
@@ -151,7 +151,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Length must be between 1 and 350.']
 
-		2.12 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[education-test_case11]
+		2.12 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test11]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. Строка с одним пробелом.
 			Сервер не должен хранить пустые значения.
@@ -162,7 +162,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Not a valid string.']
 
-		2.13 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[education-test_case12]
+		2.13 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test12]
 			
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства education. 
 		
@@ -172,7 +172,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : education: ['Field may not be null.']
 
-		2.14 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[identity-test_case13]
+		2.14 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test13]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity.
 		
@@ -182,7 +182,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Length must be between 1 and 350.']
 
-		2.15 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[identity-test_case14]
+		2.15 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test14]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity.
 		
@@ -192,7 +192,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Not a valid string.']
 
-		2.16 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[identity-test_case15]
+		2.16 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test15]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity.
 		
@@ -202,7 +202,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Length must be between 1 and 350.']
 
-		2.17 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[identity-test_case16]
+		2.17 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test16]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity. Пустая строка c пробелом.
 		
@@ -212,7 +212,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Not a valid string.']
 
-		2.18 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[identity-test_case17]
+		2.18 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test17]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства identity. 
 		
@@ -222,7 +222,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : identity: ['Field may not be null.']
 
-		2.19 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[other_aliases-test_case18] 
+		2.19 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test18] 
 			
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. Пустая строка.
 		
@@ -232,7 +232,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Length must be between 1 and 350.']
 
-		2.20 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[other_aliases-test_case18]
+		2.20 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test18]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. 
 		
@@ -242,7 +242,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Not a valid string.']
 
-		2.21 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[other_aliases-test_case19]
+		2.21 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test19]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. 
 		
@@ -252,7 +252,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Length must be between 1 and 350.']
 
-		2.22 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[other_aliases-test_case20] 
+		2.22 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test20] 
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. 
 		
@@ -263,7 +263,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Length must be between 1 and 350.']
 
 
-		2.23 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[other_aliases-test_case21] 
+		2.23 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test21] 
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. Один пробел.
 		
@@ -274,7 +274,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Not a valid string.']
 
 	
-		2.24 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[other_aliases-test_case22] 
+		2.24 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test22] 
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства other_aliases. 
 		
@@ -284,7 +284,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : other_aliases: ['Field may not be null.']
 
-		2.25 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[universe-test_case23]
+		2.25 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test23]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. 
 		
@@ -294,7 +294,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Length must be between 1 and 350.']
 
-		2.26 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[universe-test_case24]
+		2.26 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test24]
 			
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. 
 		
@@ -304,7 +304,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Not a valid string.']
 
-		2.27 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[universe-test_case25]
+		2.27 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test25]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. 
 		
@@ -314,7 +314,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Length must be between 1 and 350.']
 
-		2.28 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[universe-test_case26] 
+		2.28 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test26] 
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. Один пробел. 
 		
@@ -325,7 +325,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Not a valid string.']]
 
 
-		2.29 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[universe-test_case27]
+		2.29 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test27]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства universe. Один пробел. 
 		
@@ -336,7 +336,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : universe: ['Field may not be null.']
 
 
-		2.30 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[weight-test_case28]
+		2.30 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test28]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства weight. Пустая строка
 		
@@ -347,7 +347,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : weight: ['Not a valid number.']
 
  
-		2.31  Tests/create_instance.py::Test_create_instance::test_negative_create_instance[weight-test_case29]
+		2.31  Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test29]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства weight. Пустая строка
 		
@@ -357,7 +357,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : weight: ['Field may not be null.']
 
-		2.32 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[height-test_case30]
+		2.32 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test30]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства height. Рост не может быть отрицательным.
 		
@@ -368,7 +368,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : height: ['Not a valid number.']
 
 
-		2.33 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[height-test_case31]
+		2.33 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test31]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства height. 
 		
@@ -378,7 +378,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : height: ['Not a valid number.']
 
-		2.34 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[height-test_case32]
+		2.34 Tests/create_instance.py::Test_create_instance::test_negative_create_instance[data_negative_test32]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства height.
 		
@@ -391,7 +391,7 @@ Additional info:
 
 3. Запросы на создание экземпляра с корректными данными: 
 
-		3.1 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[education-test_case4]
+		3.1 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test4]
 
 			Описание: Сервер должен принимать корректные изменения параметра education.
 		
@@ -402,7 +402,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 200
 
 
-		3.2 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[education-test_case5] 
+		3.2 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test5] 
 
 			Описание: Сервер должен принимать корректные изменения параметра education. 
 		
@@ -413,7 +413,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 200
 
 
-		3.3 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[education-test_case6]
+		3.3 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test6]
 
 			Описание: Сервер должен принимать корректные изменения параметра education. 
 		
@@ -423,7 +423,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.4 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[education-test_case7]
+		3.4 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test7]
 
 			Описание: Сервер должен принимать корректные изменения параметра education. 
 		
@@ -433,7 +433,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.5 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[identity-test_case8]
+		3.5 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test8]
 
 			Описание: Сервер должен принимать корректные изменения параметра identity.
 		
@@ -444,7 +444,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 200
 
 
-		3.6 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[identity-test_case9]
+		3.6 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test9]
 
 			Описание: Сервер должен принимать корректные изменения параметра identity.
 		
@@ -454,7 +454,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.7 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[identity-test_case10] 
+		3.7 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test10] 
 			
 			Описание: Сервер должен принимать корректные изменения параметра identity.
 		
@@ -464,7 +464,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.8 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[identity-test_case11]  
+		3.8 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test11]  
 
 			Описание: Сервер должен принимать корректные изменения параметра identity.
 		
@@ -474,7 +474,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.9 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[other_aliases-test_case12]
+		3.9 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test12]
 
 			Описание: Сервер должен принимать корректные изменения параметра other_aliases.
 		
@@ -484,7 +484,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.10 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[other_aliases-test_case13] 
+		3.10 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test13] 
 
 			Описание: Сервер должен принимать корректные изменения параметра other_aliases.
 		
@@ -495,7 +495,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 200
 
 
-		3.11 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[other_aliases-test_case14] 
+		3.11 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test14] 
 
 			Описание: Сервер должен принимать корректные изменения параметра other_aliases.
 		
@@ -505,7 +505,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.12 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[other_aliases-test_case15]
+		3.12 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test15]
 
 			Описание: Сервер должен принимать корректные изменения параметра other_aliases.
 		
@@ -515,7 +515,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.13 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[universe-test_case16]
+		3.13 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test16]
 
 			Описание: Сервер должен принимать корректные изменения параметра universe.
 		
@@ -526,7 +526,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 200
 			
 
-		3.14 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[universe-test_case17]
+		3.14 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test17]
 
 			Описание: Сервер должен принимать корректные изменения параметра universe.
 		
@@ -536,7 +536,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.15 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[universe-test_case18]
+		3.15 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test18]
 
 			Описание: Сервер должен принимать корректные изменения параметра universe.
 		
@@ -546,7 +546,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.16 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[universe-test_case19] 
+		3.16 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test19] 
 
 			Описание: Сервер должен принимать корректные изменения параметра universe.
 		
@@ -557,7 +557,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 200
 			
 
-		3.17 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[weight-test_case20]
+		3.17 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test20]
 			
 			Описание: Сервер должен принимать корректные изменения параметра weight.
 		
@@ -567,7 +567,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.18 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[weight-test_case21]
+		3.18 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test21]
 
 			Описание: Сервер должен принимать корректные изменения параметра weight.
 		
@@ -578,7 +578,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 200
 
 
-		3.19 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[weight-test_case22]
+		3.19 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test22]
 
 			Описание: Сервер должен принимать корректные изменения параметра weight.
 		
@@ -588,7 +588,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.20 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[weight-test_case23]
+		3.20 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test23]
 
 			Описание: Сервер должен принимать корректные изменения параметра weight.
 		
@@ -598,7 +598,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.21 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[height-test_case24]
+		3.21 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test24]
 
 			Описание: Сервер должен принимать корректные изменения параметра height.
 		
@@ -608,7 +608,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.22 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[height-test_case25]
+		3.22 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test25]
 
 			Описание: Сервер должен принимать корректные изменения параметра height.
 		
@@ -619,7 +619,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 200
 
 
-		3.23 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[height-test_case26]
+		3.23 Tests/modify_instance.py::Test_modify_instance::test_positive_modify_instance[data_positive_test26]
 		
 			Описание: Сервер должен принимать корректные изменения параметра height.
 		
@@ -629,7 +629,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.24 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[name-test_case0] 
+		3.24 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test0] 
 
 			Описание: Сервер должен принимать корректные изменения параметра name.
 		
@@ -639,7 +639,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.25 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[name-test_case1]
+		3.25 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test1]
 		
 			Описание: Сервер должен принимать корректные изменения параметра name.
 		
@@ -649,7 +649,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.26 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[name-test_case2]
+		3.26 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test2]
 		
 			Описание: Сервер должен принимать корректные изменения параметра name.
 		
@@ -659,7 +659,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200
 
-		3.27 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[name-test_case3] 
+		3.27 Tests/create_instance.py::Test_create_instance::test_positive_create_instance[data_positive_test3] 
 
 			Описание: Сервер должен принимать корректные изменения параметра name.
 		
@@ -672,7 +672,7 @@ Additional info:
 
 4.Запросы на создание ублирующего экземпляра с корректными данными: 
 
-		4.1 Tests/create_instance.py::Test_create_instance::test_duplicate_create_instance[name-test_case0]
+		4.1 Tests/create_instance.py::Test_create_instance::test_duplicate_create_instance[data_duplicate_test0]
 
 		Precondition : Создать экземпляр со следующими параметрами : {'name':'Test duplicate name'}
 		

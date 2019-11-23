@@ -41,7 +41,7 @@ Additional info:
 
 2. Запросы на поиск экземпляра с некорректными параметрами:
 
-		2.1 Tests/delete_instance.py::Test_delete_instance::test_negative_search_instance[name-test_case0]
+		2.1 Tests/delete_instance.py::Test_delete_instance::test_negative_search_instance[data_negative_test0]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства name
 
@@ -52,7 +52,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : 'name parameter is required'
 
 
-		2.2 Tests/delete_instance.py::Test_delete_instance::test_negative_search_instance[name-test_case1]
+		2.2 Tests/delete_instance.py::Test_delete_instance::test_negative_search_instance[data_negative_test1]
 
 			Описание: Сервер должен принимать только корректные значения передаваемого свойства name.
 				Отработка сценария НЕ нахождения экземпляра 
@@ -64,7 +64,7 @@ Additional info:
 			Ожидаемый результат : Код ответа на запрос - 400, Ошибка : 'No such name'
 
 
-		2.3 Tests/delete_instance.py::Test_delete_instance::test_negative_search_instance[name-test_case2]
+		2.3 Tests/delete_instance.py::Test_delete_instance::test_negative_search_instance[data_negative_test2]
 
 			Precondition : Создать экземпляр с параметрами = {'name':'not allowed without plus'} 
 
@@ -81,7 +81,7 @@ Additional info:
 3. Запросы на поиск экземпляра с некорректными параметрами:
 
 		
-		3.1 Tests/delete_instance.py::Test_delete_instance::test_positive_search_instance[name-test_case0]
+		3.1 Tests/delete_instance.py::Test_delete_instance::test_positive_search_instance[data_positive_test0]
 
 			Precondition : Создать экземпляр с параметрами = {'name':'find space'} 
 
@@ -96,7 +96,7 @@ Additional info:
 			
 			Ожидаемый результат : Код ответа на запрос - 200, Сообщение : find space is deleted
 
-		3.2 Tests/delete_instance.py::Test_delete_instance::test_positive_search_instance[name-test_case1]
+		3.2 Tests/delete_instance.py::Test_delete_instance::test_positive_search_instance[data_negative_test1]
 
 			Precondition : Создать экземпляр с параметрами = {'name':'find'} 
 
