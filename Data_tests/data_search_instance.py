@@ -42,8 +42,7 @@
             }]
 """
 
-
-date_negative_search_instance = {
+data_negative_search_instance = {
     'name': [{
         'value': 'miss',
         'error': 'name parameter is required'

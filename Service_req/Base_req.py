@@ -1,33 +1,38 @@
 import requests as r
 
+default_auth = ('Volkov.denis.vad@yandex.ru', 'hgJH768Cv23')
 
-class Base_req():
+api_url_v2 = 'http://rest.test.ivi.ru/v2'
+collection_url = '/characters'
+instance_collection_url = '/character'
+reset_collection_url = '/reset'
 
-    def __init__(self, app):
-        self.app = app
+max_items_collections = 500
 
-    _session = r.session()
+headers = {
+    'Content-Type': 'application/json'
+}
 
-    def get_method(self, url, params=None, auth=None):
-        if auth is None:
-            auth = self.app.auth
-        result = self._session.get(url, params=params, auth=auth, headers=self.app.headers)
-        return result
+def get_method(url, params=None, auth=None):
+    if auth is None:
+        auth = default_auth
+    result = r.get(url, params=params, auth=auth, headers=headers)
+    return result
 
-    def post_method(self, url, json=None, auth=None):
-        if auth is None:
-            auth = self.app.auth
-        result = self._session.post(url, headers=self.app.headers, json=json, auth=auth)
-        return result
+def post_method(url, json=None, auth=None):
+    if auth is None:
+        auth = default_auth
+    result = r.post(url, headers=headers, json=json, auth=auth)
+    return result
 
-    def delete_method(self, url, auth=None):
-        if auth is None:
-            auth = self.app.auth
-        result = self._session.delete(url, headers=self.app.headers, auth=auth)
-        return result
+def delete_method(url, auth=None):
+    if auth is None:
+        auth = default_auth
+    result = r.delete(url, headers=headers, auth=auth)
+    return result
 
-    def put_method(self, url, json=None, auth=None):
-        if auth is None:
-            auth = self.app.auth
-        result = self._session.put(url, headers=self.app.headers, json=json, auth=auth)
-        return result
+def put_method(url, json=None, auth=None):
+    if auth is None:
+        auth = default_auth
+    result = r.put(url, headers=headers, json=json, auth=auth)
+    return result
